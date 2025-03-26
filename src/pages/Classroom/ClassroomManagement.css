@@ -1,0 +1,59 @@
+/* Tổng thể */
+.page-container {
+    padding: 24px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Tiêu đề */
+  .page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: #333;
+  }
+  
+  /* Nút thêm phòng học */
+  .add-classroom-btn {
+    margin-bottom: 16px;
+    background-color: #1890ff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 8px 16px;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-classroom-btn:hover {
+    background-color: #40a9ff;
+  }
+  
+  /* Bảng danh sách phòng học */
+  .classroom-table {
+    background-color: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Modal */
+  .ant-modal {
+    border-radius: 8px;
+  }
+  
+  .ant-modal-header {
+    background-color: #fafafa;
+    border-bottom: 1px solid #f0f0f0;
+    border-radius: 8px 8px 0 0;
+  }
+  
+  .ant-modal-title {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .ant-modal-footer {
+    border-top: none;
+  }

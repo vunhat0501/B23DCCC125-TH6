@@ -42,6 +42,12 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+	{
+		path: '/classroom-management',
+		name: 'ClassroomManagement',
+		component: './Classroom/ClassroomManagement',
+		icon: 'ArrowsAltOutlined',
+	  },
 
 	// DANH MUC HE THONG
 	// {
