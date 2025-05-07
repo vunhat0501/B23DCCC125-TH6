@@ -1,0 +1,563 @@
+@import '~antd/lib/style/themes/default.less';
+
+
+@primary-red: #cc1c1c;
+@dark-red: #b01515;
+@light-red: #fa5f5f;
+@white: #fff;
+@black: #333;
+@gray-light: #f5f5f5;
+@gray-medium: #e0e0e0;
+@gray-dark: #888;
+@blue-tag: #1890ff;
+
+
+@card-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+@hover-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+@button-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+
+@transition-speed: 0.2s;
+
+
+:global(.hide-on-mobile) {
+  @media (max-width: 576px) {
+    display: none !important;
+  }
+}
+
+:global(.action-btn-effect) {
+  position: relative;
+  overflow: hidden;
+  
+  &:after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+  }
+
+  &:focus:not(:active)::after {
+    animation: ripple 0.6s ease-out;
+  }
+  
+  @keyframes ripple {
+    0% {
+      transform: scale(0, 0);
+      opacity: 0.5;
+    }
+    20% {
+      transform: scale(25, 25);
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0;
+      transform: scale(40, 40);
+    }
+  }
+}
+
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 24px;
+  min-height: calc(100vh - 64px);
+  
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
+}
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 32px;
+  
+  @media (max-width: 576px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}
+
+.appTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  h1 {
+    margin: 0;
+    font-size: 28px;
+    color: @primary-red;
+    font-weight: 500;
+  }
+  
+  :global(.anticon) {
+    font-size: 28px;
+    color: @primary-red;
+  }
+  
+  @media (max-width: 576px) {
+    h1 {
+      font-size: 24px;
+    }
+    
+    :global(.anticon) {
+      font-size: 24px;
+    }
+  }
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  
+  @media (max-width: 576px) {
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.addButton {
+  height: 40px;
+  background-color: @primary-red;
+  border-color: @primary-red;
+  border-radius: 4px;
+  box-shadow: @button-shadow;
+  
+  &:hover, &:focus {
+    background-color: @dark-red;
+    border-color: @dark-red;
+  }
+  
+  @media (max-width: 576px) {
+    height: 36px;
+    font-size: 13px;
+    padding: 0 12px;
+  }
+}
+
+.viewToggle {
+  display: flex;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: @button-shadow;
+  
+  button {
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    
+    &:global(.ant-btn-primary) {
+      background-color: @primary-red;
+    }
+    
+    @media (max-width: 576px) {
+      height: 36px;
+      width: 36px;
+    }
+  }
+  
+  .gridButton {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  
+  .listButton {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+
+.filterPanel {
+  background-color: @white;
+  padding: 16px;
+  border-radius: 6px;
+  box-shadow: @card-shadow;
+  margin-bottom: 32px;
+  
+  @media (max-width: 768px) {
+    padding: 12px;
+  }
+}
+
+.searchSection, .tagSection, .dateSection {
+  display: flex;
+  align-items: center;
+  background-color: @gray-light;
+  border-radius: 4px;
+  padding: 0 12px;
+  height: 38px;
+  width: 100%;
+  border: 1px solid @gray-medium;
+  transition: all @transition-speed ease;
+  
+  &:hover, &:focus-within {
+    border-color: @primary-red;
+    box-shadow: 0 0 0 2px fadeout(@primary-red, 80%);
+  }
+  
+  :global(.anticon) {
+    color: @primary-red;
+    font-size: 16px;
+    margin-right: 8px;
+  }
+  
+  @media (max-width: 576px) {
+    height: 36px;
+  }
+}
+
+.searchInput, .tagSelect, .datePicker {
+  flex: 1;
+  background: transparent;
+  width: 100%;
+  
+  &:global(.ant-input) {
+    height: 36px;
+    background: transparent;
+    padding-left: 0;
+    border: none !important;
+    box-shadow: none !important;
+    
+    &:hover, &:focus {
+      border: none !important;
+      box-shadow: none !important;
+      background: transparent;
+    }
+    
+    &::placeholder {
+      color: @gray-dark;
+    }
+  }
+  
+  &:global(.ant-select) {
+    .ant-select-selector {
+      height: 36px;
+      padding-left: 0;
+      display: flex;
+      align-items: center;
+      background: transparent;
+      border: none !important;
+      box-shadow: none !important;
+    }
+  }
+  
+  &:global(.ant-picker) {
+    padding-left: 0;
+    background: transparent;
+    border: none !important;
+    box-shadow: none !important;
+  }
+  
+  &:focus {
+    outline: none;
+  }
+  
+  @media (max-width: 576px) {
+    &:global(.ant-input), &:global(.ant-select-selector), &:global(.ant-picker) {
+      height: 34px;
+      font-size: 13px;
+    }
+    
+    &:global(.ant-select) {
+      .ant-select-selector {
+        height: 34px;
+      }
+    }
+  }
+}
+
+.clearButton {
+  height: 38px;
+  border-radius: 4px;
+  background-color: @light-red;
+  border-color: @light-red;
+  box-shadow: @button-shadow;
+  font-weight: 500;
+  
+  &:hover, &:focus {
+    background-color: @primary-red;
+    border-color: @primary-red;
+    box-shadow: @hover-shadow;
+  }
+  
+  @media (max-width: 576px) {
+    height: 36px;
+    font-size: 13px;
+  }
+}
+
+// Notes Container
+.notesContainer {
+  margin-top: 24px;
+}
+
+.notesGrid {
+  margin: 0 -8px;
+}
+
+.noteCol {
+  padding: 8px;
+  transition: transform @transition-speed ease;
+  
+  &:hover {
+    transform: translateY(-4px);
+  }
+}
+
+.createButton {
+  margin-top: 16px;
+  background-color: @primary-red;
+  border-color: @primary-red;
+  
+  &:hover, &:focus {
+    background-color: @dark-red;
+    border-color: @dark-red;
+  }
+}
+
+// Empty State
+.emptyState {
+  text-align: center;
+  padding: 60px 0;
+  background-color: @white;
+  border-radius: 6px;
+  box-shadow: @card-shadow;
+  
+  :global(.ant-empty-description) {
+    color: @gray-dark;
+    font-size: 16px;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 40px 0;
+    
+    :global(.ant-empty-description) {
+      font-size: 14px;
+    }
+  }
+}
+
+// Card Styling
+:global(.ant-card) {
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: @card-shadow;
+  transition: box-shadow @transition-speed ease, transform @transition-speed ease;
+  height: 100%;
+  
+  &:hover {
+    box-shadow: @hover-shadow;
+    transform: translateY(-4px);
+  }
+  
+  .ant-card-head {
+    border-bottom: 1px solid @gray-light;
+    min-height: auto;
+    
+    .ant-card-head-title {
+      padding: 16px;
+      font-size: 16px;
+      font-weight: 500;
+    }
+  }
+  
+  .ant-card-body {
+    padding: 16px;
+  }
+  
+  .ant-card-actions {
+    background: @gray-light;
+    border-top: 1px solid @gray-medium;
+    
+    li {
+      margin: 8px 0;
+      
+      .ant-btn {
+        color: @gray-dark;
+        
+        &:hover {
+          color: @primary-red;
+        }
+      }
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .ant-card-head {
+      .ant-card-head-title {
+        padding: 12px;
+        font-size: 15px;
+      }
+    }
+    
+    .ant-card-body {
+      padding: 12px;
+    }
+  }
+}
+
+// Action buttons
+:global(.action-btn) {
+  position: relative;
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+  
+  &.important-btn {
+    &:hover, &:focus {
+      color: #f5222d;
+    }
+    
+    &.active {
+      color: #f5222d;
+    }
+  }
+  
+  &.pin-btn {
+    &:hover, &:focus {
+      color: #1890ff;
+    }
+    
+    &.active {
+      color: #1890ff;
+    }
+  }
+}
+
+// Note Tags
+.noteTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+  
+  :global(.ant-tag) {
+    margin: 0;
+    border-radius: 12px;
+    background-color: fadeout(@blue-tag, 90%);
+    border-color: fadeout(@blue-tag, 60%);
+    color: @blue-tag;
+    font-size: 12px;
+    padding: 0 10px;
+    
+    &:hover {
+      background-color: fadeout(@blue-tag, 80%);
+    }
+  }
+  
+  @media (max-width: 576px) {
+    gap: 6px;
+    margin-top: 8px;
+    
+    :global(.ant-tag) {
+      font-size: 11px;
+      padding: 0 8px;
+    }
+  }
+}
+
+// List View
+:global(.ant-list-item) {
+  padding: 16px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  background-color: @white;
+  box-shadow: @card-shadow;
+  transition: box-shadow @transition-speed ease, transform @transition-speed ease;
+  
+  &:hover {
+    box-shadow: @hover-shadow;
+    transform: translateY(-4px);
+  }
+  
+  .ant-list-item-meta-title {
+    font-size: 16px;
+    margin-bottom: 8px;
+  }
+  
+  .ant-list-item-action {
+    margin-top: 16px;
+  }
+  
+  @media (max-width: 576px) {
+    padding: 12px;
+    
+    .ant-list-item-meta-title {
+      font-size: 15px;
+    }
+    
+    .ant-list-item-action {
+      margin-top: 12px;
+    }
+  }
+}
+
+// Modal Styling
+.noteModal {
+  :global(.ant-modal-content) {
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  
+  :global(.ant-modal-header) {
+    padding: 16px 24px;
+    background-color: @white;
+    border-bottom: 1px solid @gray-light;
+  }
+  
+  :global(.ant-modal-title) {
+    font-size: 18px;
+    color: @black;
+  }
+  
+  :global(.ant-modal-body) {
+    padding: 24px;
+  }
+  
+  :global(.ant-form-item-label > label) {
+    font-weight: 500;
+  }
+  
+  :global(.ant-btn-primary) {
+    background-color: @primary-red;
+    border-color: @primary-red;
+    
+    &:hover, &:focus {
+      background-color: @dark-red;
+      border-color: @dark-red;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    :global(.ant-modal-header) {
+      padding: 12px 16px;
+    }
+    
+    :global(.ant-modal-title) {
+      font-size: 16px;
+    }
+    
+    :global(.ant-modal-body) {
+      padding: 16px;
+    }
+  }
+} 

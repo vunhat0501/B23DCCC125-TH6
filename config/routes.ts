@@ -43,12 +43,29 @@
 		component: './TodoList',
 	},
 	{
+		path: '/personal-notes',
+		name: 'PersonalNotes',
+		icon: 'FileTextOutlined',
+		component: './PersonalNotes',
+	},
+	{
 		path: '/classroom-management',
 		name: 'ClassroomManagement',
 		component: './Classroom/ClassroomManagement',
 		icon: 'ArrowsAltOutlined',
 	  },
-
+	  {
+		path: '/bai3',
+		name: 'bai3',
+		component: './bai3',
+		icon: 'ArrowsAltOutlined',
+	  },
+	  {
+		path: '/bai4',
+		name: 'bai4',
+		component: './bai4',
+		icon: 'ArrowsAltOutlined',
+	  },
 	// DANH MUC HE THONG
 	// {
 	// 	name: 'DanhMuc',
