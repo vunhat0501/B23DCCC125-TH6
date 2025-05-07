@@ -42,6 +42,12 @@
 		icon: 'OrderedListOutlined',
 		component: './TodoList',
 	},
+	{
+		path: '/quan-ly-nhom',
+		name: 'Quan ly cong viec nhom',
+		icon: 'TeamOutlined',
+		component: './NhomCongViec',
+	},
 
 	// DANH MUC HE THONG
 	// {
